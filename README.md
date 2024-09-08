@@ -1,34 +1,19 @@
 
-BuildHR Manager es un sistema que apunta a una gestión integral de recursos humanos diseñado para optimizar y simplificar los procesos de administración de personal en empresas constructoras. Este sistema ofrece una solución completa para la gestión eficiente del talento humano.
+TSUNDOKU es un sistema que apunta a la gestión de librerías, enfocada en la venta de libros, la administración de inventarios, el registro de clientes y la gestión de ventas.
 
 ## Descripción del Proyecto
 
 **Proyecto Integrador - Tecnicatura Superior en Ciencia de Datos e Inteligencia Artificial - Cohorte 2024**
 
-Como parte del "Proyecto Integrador" para la Tecnicatura Superior en Ciencia de Datos e Inteligencia Artificial, Cohorte 2024, nos propusimos a desarrollar una base de datos que apunta principalmente a la gestión de tareas de los empleados de una constructora. Para esto creamos el CRUD (Create, Read, Update, Delate o en español Crear, Leer, Actualizar y Borrar) de las 5 tablas que la componen para así poder interactuar con las mismas que a partir de los archivos que se muestran en este documento, cumpla con las funcionalidades planteadas a continuacion
+Como parte del "Proyecto Integrador" para la Tecnicatura Superior en Ciencia de Datos e Inteligencia Artificial, Cohorte 2024, nos propusimos a desarrollar una aplicación y base de datos que apunta principalmente a la gestión de stock y ventas de una librería. 
 
 ### Asignaturas y sus respectivos contenidos
 
-- Base de Datos I
-     - [Ver Diagrama Entidad - Relación »](https://github.com/NoeliaSoto/Integrador-IPyBDI/blob/main/BD/diagramas/Diagrama_ER.jpg "Ver Diagrama Entidad - Relación »")
-     - [Ver Diagrama Crow's Foot »](https://github.com/NoeliaSoto/Integrador-IPyBDI/blob/main/BD/diagramas/Diagrama_CF.jpg.png "Ver Diagrama Crow's Foot »")
-     - [Ver Creación de Base de Datos o Schema »](https://github.com/NoeliaSoto/Integrador-IPyBDI/blob/main/BD/database_scheme_creation.sql "Ver Creación Base de Datos »")
-     - [Ver Inserción de Datos »](https://github.com/NoeliaSoto/Integrador-IPyBDI/blob/main/BD/database_insertion_data.sql "Ver Inserción de Datos »")
-     - [Ver Consultas en Base de Datos »](https://github.com/NoeliaSoto/Integrador-IPyBDI/blob/main/BD/database_insertion_data.sql "Ver Inserción de Datos »")
-
-
-- Ética y Deontología Profesional
-     -  [Ver Wiki »](https://github.com/NoeliaSoto/Integrador-IPyBDI/wiki/%C3%89tica-y-Deontolog%C3%ADa-Profesional "Ver Wiki »")
-
-       
-- Introducción a la Programación
-     - [Ver pseudocódigo »](https://github.com/NoeliaSoto/Integrador-IPyBDI/blob/main/recursosHumanosConstructora.psc "Ver pseudocódigo »")
-     - [Ver CRUD tabla Empleados »](https://github.com/NoeliaSoto/Integrador-IPyBDI/blob/main/Python/crud_empleados.py "Ver CRUD tabla Empleados »")
-     - [Ver CRUD tabla Proyectos »](https://github.com/NoeliaSoto/Integrador-IPyBDI/blob/main/Python/crud_proyecto.py "Ver CRUD tabla Proyectos »")
-     - [Ver CRUD tabla Clientes »](https://github.com/NoeliaSoto/Integrador-IPyBDI/blob/main/Python/crud_clientes.py "Ver CRUD tabla Clientes »")
-     - [Ver CRUD tabla Departamentos »](https://github.com/NoeliaSoto/Integrador-IPyBDI/blob/main/Python/crud_departamentos.py "Ver CRUD tabla Departamentos »")
-     - [Ver CRUD tabla Tareas »](https://github.com/NoeliaSoto/Integrador-IPyBDI/blob/main/Python/crud_tareas.py "Ver CrRUD tabla Tareas »")
-
+- Base de Datos II
+     - [Ver Diagrama de Base de Datos»](https://github.com/Nico0626/INNOVACION-EN-GESTION-DE-DATOS/blob/master/DIAGRAMA-ER.pdf "Ver Base de Datos »")
+           
+- Programación I
+     - [Ver código »](https://github.com/Nico0626/INNOVACION-EN-GESTION-DE-DATOS "Ver código »")
 
 ### Autores
 
@@ -36,43 +21,41 @@ Como parte del "Proyecto Integrador" para la Tecnicatura Superior en Ciencia de 
 |--------------------|--------------------------------------------------|------------|-----------------------------|
 | Angellotti Enzo    | [Enzoriukz](https://github.com/Enzoriukz "Enzoriukz")        | 32107971   | enzomakz@gmail.com          |
 | Menón Nicolas      | [Nico0626](https://github.com/Nico0626 "Nico0626")           | 46129760   | nico.menon.2@gmail.com      |
-| Moyano Juan Cruz   | [jcmoyano](https://github.com/jcmoyano "jcmoyano")           | 41002250   | juancruz.moyanocar@gmail.com|
 | Leyria Federico    | [Federicoleyria](https://github.com/Federicoleyria "Federicoleyria") | 43523682   | fedeleyria2016@gmail.com    |
 | Soto Noelia        | [NoeliaSoto](https://github.com/NoeliaSoto "NoeliaSoto")     | 41253579   | noeli4.soto@gmail.com       |
 
-## Modularizacion del codigo
 
-## Modularizacion del codigo
 
-### main.py
-Este archivo es nuestro archivo principal ya que tendra todos las funciones tanto en el mismo archivo, como la bienvenida y la autentificacion como archivos importados como los archivos .py donde realizaremos el CRUD.
+## Modularización del codigo
 
-### Conexion_database
-Este archivo contendra la conexion a la base de datos myysql, deberemos importar las correspondiente librerias y realizar la conexion exitosa. a este archivo se le debera imporatr a los demas archivos del crud.
-
-### CRUD_tabla
-Estos archivos contienen los CRUD de las tablas que nos permiten interactuar con la que se haya elegido, por ejemplo CRUD_clientes
-
+### main.py:
+Este archivo contiene el flujo principal del programa, que gestiona el inicio de sesión, el registro de usuarios, y las interacciones con los usuarios. También maneja la generación de captchas para verificar que no sean bots y registra la actividad en archivos de texto.
+### test_aritmetica.py:
+Incluye pruebas unitarias para las funciones definidas en el archivo aritmetica.py, verificando que las operaciones aritméticas básicas y otras funciones se comporten correctamente.
+### aritmetica.py:
+Define funciones aritméticas básicas como sumar, restar, multiplicar, dividir, y otras operaciones sobre múltiples números como suma y promedio.
+### captcha.py:
+Genera operaciones matemáticas aleatorias para un sistema de captcha. Calcula los resultados de dichas operaciones y valida la respuesta del usuario, asegurando que no sea un bot.
 
 ## Funcionalidades Clave del sistema:
 
-### Gestión de Empleados
+### Archivo: main.py
+logo(): Muestra un logo en formato ASCII.
+bienvenida(): Imprime un mensaje de bienvenida.
+login(usuarios): Gestiona el inicio de sesión con validación de usuario y contraseña.
+olvidar_contraseña(usuarios, usuario): Muestra un mensaje para contactar al administrador si se olvida la contraseña.
+registro_usuario(usuarios): Permite el registro de un nuevo usuario verificando el cumplimiento de los requisitos.
+validar_clave(clave): Verifica si una clave cumple los requisitos de seguridad.
+anotar_txt(usuarios): Guarda la información de los usuarios en un archivo de texto.
+ingresotxt(nombre_usuario): Registra la fecha y hora de ingreso de un usuario en un archivo de texto.
 
-- Registro detallado de información personal y laboral de los empleados.
-- Actualización y seguimiento de datos, incluyendo información de contacto, historial laboral y formación académica.
-- Asignación de roles y responsabilidades, y seguimiento del desempeño.
-
-### Gestión de Departamentos y Proyectos
-
-- Creación y asignación de departamentos y equipos de trabajo.
-- Seguimiento detallado de proyectos.
-- Asignación de recursos humanos según las necesidades específicas de cada proyecto.
-- Gestión de clientes según proyecto al que pertenecen
-
-### Gestión de Tareas
-- Asignación de tareas según proyectos y clientes
-- Visualización y seguimiento de las tareas de los empleados según el proyecto asignado
-- Previsión de plazos para cumplir las tareas
+### Archivo: test_aritmetica.py
+test_sumar(): Prueba la función de suma.
+test_restar(): Prueba la función de resta.
+test_dividir(): Prueba la función de división, incluyendo la verificación de divisiones por cero.
+test_multiplicar(): Prueba la función de multiplicación.
+test_sumar_n(): Prueba la función de suma de múltiples números.
+test_promedio_n(): Prueba la función de cálculo de promedio.
 
 
 ## Análisis EPS
@@ -108,7 +91,7 @@ Este análisis detalla cómo las diferentes entradas (nombre de usuario, contras
 
 1. **Inicio de Sesión Exitoso**:
    - Mensaje de bienvenida que incluye el nombre de usuario.
-   - Menú principal con opciones para gestionar empleados, departamentos, proyectos, capacitación, ausencias, generar reportes o salir del sistema.
+   - Menú principal con opciones.
 
 2. **Inicio de Sesión Fallido**:
    - Mensaje de error indicando que las credenciales son incorrectas.
@@ -121,17 +104,17 @@ Este análisis detalla cómo las diferentes entradas (nombre de usuario, contras
 
 ## Archivos esenciales y uso de la aplicación
 
-Este repositorio contiene varios archivos esenciales para el funcionamiento de BuildHR Manager, estos son:
+Este repositorio contiene varios archivos esenciales para el funcionamiento de TSUNDOKU, estos son:
 
-1. **main.py**: Archivo principal que gestiona la interfaz de usuario, incluyendo la bienvenida, autenticación y el menú principal.
-2. **conexion_database.py**: Maneja la conexión a la base de datos MySQL, necesaria para que otros archivos interactúen con la base de datos.
-3. **crud_empleados.py**: Permite crear, leer, actualizar y borrar registros de empleados.
-4. **crud_proyecto.py**: CRUD para la gestión de proyectos.
-5. **crud_clientes.py**: CRUD para la gestión de clientes.
-6. **crud_departamentos.py**: CRUD para la gestión de departamentos.
-7. **crud_tareas.py**: CRUD para la gestión de tareas.
+1. **main.py**: Archivo principal que gestiona la interfaz de usuario, incluyendo la bienvenida, el inicio de sesión, registro de usuarios, verificación de captchas y registro de actividades en archivos de texto.
 
-Para usar la aplicación, se deben instalar Visual Studio Code, MySQL y MySQL Workbench. Luego, se clona el repositorio y se ejecutan los scripts SQL proporcionados para crear y poblar la base de datos. Finalmente, se ejecuta el archivo `main.py` desde Visual Studio Code. El sistema pedirá un nombre de usuario y contraseña para acceder, y mostrará un menú principal para gestionar empleados, proyectos, clientes, departamentos y tareas, permitiendo a cualquier usuario interactuar con la aplicación sin necesidad de conocimientos previos en programación.
+2. **test_aritmetica.py**: Contiene pruebas unitarias para verificar que las funciones aritméticas del archivo aritmetica.py funcionen correctamente.
+
+3. **aritmetica.py**: Define las funciones básicas para operaciones aritméticas como sumar, restar, multiplicar, dividir, y cálculos de suma y promedio sobre múltiples números.
+
+4. **captcha.py**: Genera captchas basados en operaciones matemáticas aleatorias y valida que el usuario no sea un bot.
+
+Para usar la aplicación, se deben instalar Visual Studio Code, MySQL y MySQL Workbench. Luego, se clona el repositorio y se ejecutan los scripts SQL proporcionados para crear y poblar la base de datos. Finalmente, se ejecuta el archivo `main.py` desde Visual Studio Code. El sistema pedirá un nombre de usuario y contraseña para acceder, y mostrará un menú principal para gestionar la librería, permitiendo a cualquier usuario interactuar con la aplicación sin necesidad de conocimientos previos en programación.
 
 
 
