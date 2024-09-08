@@ -1,4 +1,8 @@
 
+░▀█▀░█▀▀░█░█░█▀█░█▀▄░█▀█░█░█░█░█  
+░░█░░▀▀█░█░█░█░█░█░█░█░█░█▀▄░█░█  
+░░▀░░▀▀▀░▀▀▀░▀░▀░▀▀░░▀▀▀░▀░▀░▀▀▀
+
 TSUNDOKU es un sistema que apunta a la gestión de librerías, enfocada en la venta de libros, la administración de inventarios, el registro de clientes y la gestión de ventas.
 
 ## Descripción del Proyecto
