@@ -12,9 +12,10 @@ TSUNDOKU es un sistema que apunta a la gestión de librerías, enfocada en la ve
 Como parte del "Proyecto Integrador" para la Tecnicatura Superior en Ciencia de Datos e Inteligencia Artificial, Cohorte 2024, nos propusimos a desarrollar una aplicación y base de datos que apunta principalmente a la gestión de stock y ventas de una librería. 
 
 ### Asignaturas y sus respectivos contenidos
-
+- Innovación en gestión de datos
+     - [Ver Documento»](https://docs.google.com/document/d/1hWAINagyNvXXh5q-O-VV8IRIuIWd9oPZ2cu3IWotG8Y/edit?usp=sharing "Ver Documento »")
 - Base de Datos II
-     - [Ver Diagrama de Base de Datos»](https://github.com/Nico0626/INNOVACION-EN-GESTION-DE-DATOS/blob/master/DIAGRAMA-ER.pdf "Ver Base de Datos »")
+     - [Ver Diagrama de Base de Datos»](https://github.com/Nico0626/INNOVACION-EN-GESTION-DE-DATOS/blob/master/DIAGRAMA-ER.pdf "Ver Diagrama de Base de Datos »")
            
 - Programación I
      - [Ver código »](https://github.com/Nico0626/INNOVACION-EN-GESTION-DE-DATOS "Ver código »")
