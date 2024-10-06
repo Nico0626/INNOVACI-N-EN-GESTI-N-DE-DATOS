@@ -12,11 +12,13 @@ TSUNDOKU esta diseñado para gestionar una librería, permitiendo a los usuarios
   
 - **aritmetica.py**: Define las funciones básicas para operaciones aritméticas como sumar, restar, multiplicar y dividir, así como cálculos de suma y promedio sobre múltiples números.
   
-- **acceso.py**: 
+- **acceso.py**: Gestiona el acceso de los usuarios y la autenticación en la aplicación. Define la clase `Acceso`, que almacena información sobre cada sesión de acceso.
   
-- **tiempo.py**:
+- **tiempo.py**: Genera un registro temporal, muestra la fecha y hora actuales en formato `año/mes/día` y la hora en formato `hora:minuto`.
   
-- **usuario.py**: 
+- **usuario.py**: Gestiona la creación, actualización, eliminación y búsqueda de usuarios. También incorpora un captcha para verificar que el usuario no sea un bot al crear nuevas cuentas.
+
+  
 ## Requisitos
 
 Para el correcto funcionamiento de TSUNDOKU, es necesario instalar:
