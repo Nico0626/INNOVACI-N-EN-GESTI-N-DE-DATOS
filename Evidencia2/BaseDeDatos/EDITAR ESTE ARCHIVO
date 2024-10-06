@@ -1,0 +1,4 @@
+##acá va la base de datos exportada en extensión .sql, y un archivo
+adicional, que puede ser en .sql también, con las consultas SQL que van a ser
+utilizadas en el backend del programa hecho en Python para la extracción y
+uso de la data
