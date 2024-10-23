@@ -1,128 +1,113 @@
+import os #utilizar OS por recomendacion de mis compañeros
 import random
 import pandas as pd
 import matplotlib.pyplot as plt
 
-def generar_datos_aleatorios(anio):
-    """Genera datos aleatorios de lluvia para un año específico sin considerar años bisiestos."""
-    # Definición de los días en cada mes
-    meses = {
-        1: 31,  # Enero
-        2: 28,  # Febrero (no se considera bisiesto)
-        3: 31,  # Marzo
-        4: 30,  # Abril
-        5: 31,  # Mayo
-        6: 30,  # Junio
-        7: 31,  # Julio
-        8: 31,  # Agosto
-        9: 30,  # Septiembre
-        10: 31, # Octubre
-        11: 30, # Noviembre
-        12: 31  # Diciembre
-    }
-    
-    # Inicializar un diccionario para almacenar los datos de lluvia por mes
-    datos_anio = {mes: [] for mes in meses.keys()}
+def crear_registros_pluviales(anio):
+    """Genera registros pluviales aleatorios para un año específico."""
+    meses = []  # Lista para almacenar los datos de lluvia de cada mes
+    for mes in range(12):  # Iterar sobre los 12 meses
+        # Determinar el número de días en el mes:
+        # 31 días para meses con 31 días, 30 para los que tienen 30, y 28/29 para febrero
+        dias = 31 if mes in [0, 2, 4, 6, 7, 9, 11] else 30 if mes != 1 else random.choice([28, 29])
+        
+        # Generar datos aleatorios de lluvia para cada día del mes (0 a 20 mm)
+        mes_datos = [random.randint(0, 20) for _ in range(dias)]
+        meses.append(mes_datos)  # Agregar los datos del mes a la lista
 
-    # Generar datos aleatorios para cada día de cada mes
-    for mes, dias in meses.items():
-        for dia in range(1, dias + 1):
-            # Generar una cantidad aleatoria de lluvia entre 0 y 20 mm
-            cantidad = round(random.uniform(0, 20), 2)
-            datos_anio[mes].append(cantidad)
-
-    return datos_anio
-
-def guardar_datos_csv(datos, anio):
-    """Guarda los datos generados en un archivo CSV."""
     # Crear un DataFrame a partir de los datos
-    df = pd.DataFrame(datos)
-    df.index += 1  # Cambiar el índice para que comience en 1 (días del mes)
-    # Guardar el DataFrame en un archivo CSV
-    df.to_csv(f'registro_pluvial_{anio}.csv', index_label='Día')
+    df = pd.DataFrame(meses).T  # Transponer para que los meses sean columnas
+    df.columns = [f'Mes {i + 1}' for i in range(12)]  # Nombrar las columnas como 'Mes 1', 'Mes 2', etc.
+    return df
+
+def guardar_datos_csv(df, anio):
+    """Guarda el DataFrame en un archivo CSV."""
+    df.to_csv(f'registroPluvial{anio}.csv', index=False)  # Guardar sin incluir el índice
 
 def cargar_datos_csv(anio):
     """Carga los datos de lluvia desde un archivo CSV."""
     try:
-        # Leer el archivo CSV y convertirlo en un diccionario de listas
-        return pd.read_csv(f'registro_pluvial_{anio}.csv', index_col=0).to_dict(orient='list')
+        return pd.read_csv(f'registroPluvial{anio}.csv')  # Leer el archivo CSV
     except FileNotFoundError:
-        # Si el archivo no existe, devolver None
-        return None
+        return None  # Si el archivo no existe, devolver None
 
-def mostrar_registros_mes(datos, mes):
+def mostrar_registros_mes(df, mes):
     """Muestra los registros de lluvia para un mes específico."""
-    if mes in datos:
-        # Imprimir los registros pluviales del mes solicitado
-        print(f"Registros pluviales para el mes {mes}: {datos[mes]}")
-    else:
-        print("Mes inválido. Por favor, elige un mes del 1 al 12.")
+    print(f"Registros pluviales para el mes {mes + 1}:")  # Mostrar el mes
+    print(df.iloc[:, mes])  # Imprimir los datos del mes seleccionado
 
-def graficar_datos(datos):
-    """Genera gráficos para visualizar los datos de lluvia."""
-    # Calcular la lluvia total por mes
-    total_anual = {mes: sum(datos[mes]) for mes in datos}
-    
-    # Gráfico de barras: lluvias anuales
-    plt.figure(figsize=(10, 6))
-    plt.bar(total_anual.keys(), total_anual.values(), color='blue')
-    plt.title('Lluvias Anuales')
-    plt.xlabel('Meses')
-    plt.ylabel('Total de Lluvia (mm)')
-    plt.xticks(range(1, 13), ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 
-                               'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'])
-    plt.grid(axis='y')  # Añadir cuadrícula en el eje y
-    plt.show()
+def crear_graficos(df, anio):
+    """Crea gráficos para visualizar los datos de lluvia."""
+    suma_anual = df.sum()  # Sumar las lluvias de cada mes para obtener totales anuales
+    meses_nombres = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 
+                     'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic']  # Nombres de los meses
 
-    # Gráfico de dispersión: días vs meses
-    dias = []
-    meses = []
-    for mes, lluvias in datos.items():
-        dias.extend(range(1, len(lluvias) + 1))  # Agregar días
-        meses.extend([mes] * len(lluvias))  # Agregar mes correspondiente
+    # Gráfico de barras sobre lluvias anuales
+    plt.figure(figsize=(10, 6))  # Configurar el tamaño de la figura
+    suma_anual.plot(kind='bar', color='blue')  # Crear gráfico de barras
+    plt.title(f'Lluvias Anuales en {anio}')  # Título del gráfico
+    plt.xlabel('Mes')  # Etiqueta del eje X
+    plt.ylabel('Lluvia (mm)')  # Etiqueta del eje Y
+    plt.xticks(ticks=range(12), labels=meses_nombres, rotation=0)  # Etiquetas de los meses
+    plt.show()  # Mostrar el gráfico
 
-    plt.figure(figsize=(10, 6))
-    plt.scatter(meses, dias, c='red')  # Gráfico de dispersión
-    plt.title('Gráfico de Dispersión de Lluvias')
-    plt.xlabel('Meses')
-    plt.ylabel('Días')
-    plt.xticks(range(1, 13), ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 
-                               'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'])
-    plt.grid()
-    plt.show()
+    # Gráfico de dispersión para visualizar la lluvia por día en cada mes
+    for mes in range(12):
+        # Crear un gráfico de dispersión para cada mes
+        plt.scatter([meses_nombres[mes]] * len(df.index), df.index + 1, 
+                    label=f'{meses_nombres[mes]}', alpha=0.5, 
+                    s=df.iloc[:, mes] * 2)  # Tamaño proporcional a la lluvia
 
-    # Gráfico circular: distribución de lluvias por mes
-    plt.figure(figsize=(8, 8))
-    plt.pie(total_anual.values(), labels=total_anual.keys(), autopct='%1.1f%%', startangle=140)
-    plt.title('Distribución de Lluvias por Mes')
+    plt.ylabel('Día (1-31)')  # Etiqueta del eje Y
+    plt.xlabel('Mes')  # Etiqueta del eje X
+    plt.xticks(rotation=45, ha='right')  # Rotar etiquetas de los meses
+    plt.title('Gráfico de Dispersión de Lluvias')  # Título del gráfico
+    plt.legend(loc='upper left', bbox_to_anchor=(1, 1))  # Leyenda
+    plt.tight_layout()  # Ajustar diseño
+    plt.show()  # Mostrar el gráfico
+
+    # Gráfico circular para la distribución de lluvias por mes
+    plt.figure(figsize=(8, 8))  # Configurar tamaño
+    plt.pie(suma_anual, labels=meses_nombres, autopct='%1.1f%%', startangle=90)  # Gráfico circular
+    plt.title('Distribución de Lluvias por Mes')  # Título
     plt.axis('equal')  # Para que el gráfico sea un círculo
-    plt.show()
+    plt.show()  # Mostrar gráfico
 
 def main():
     """Función principal para ejecutar el programa."""
+    print('*' * 50, '\n Menú')  # Separador en la consola
+    print('*' * 50)
+
     while True:
-        try:
-            # Solicitar el año al usuario
-            anio = int(input("Ingrese el año para cargar los registros pluviales: "))
-            # Intentar cargar los datos desde el CSV
-            datos = cargar_datos_csv(anio)
+        # Solicitar el año al usuario
+        anio = input("Ingrese el año para cargar los registros pluviales: ")
+        df = cargar_datos_csv(anio)  # Cargar datos desde el CSV
 
-            if datos is None:
-                print(f"No se encontraron datos para el año {anio}. Generando datos aleatorios.")
-                datos = generar_datos_aleatorios(anio)  # Generar datos aleatorios
-                guardar_datos_csv(datos, anio)  # Guardar en CSV
-            else:
-                print(f"Datos cargados desde el archivo para el año {anio}.")
-                
-            # Solicitar el mes al usuario
-            mes = int(input("Ingrese el mes (1-12) que desea consultar: "))
-            mostrar_registros_mes(datos, mes)  # Mostrar datos del mes
-            graficar_datos(datos)  # Graficar los datos
-            
-            # Preguntar si desea realizar otra consulta
-            if input("¿Desea consultar otro año? (s/n): ").lower() != 's':
-                break
-        except ValueError:
-            print("Entrada inválida. Por favor, intente de nuevo.")
+        if df is None:  # Si no hay datos, generar nuevos
+            print(f"No se encontraron registros para el año {anio}. Generando datos aleatorios...")
+            df = crear_registros_pluviales(anio)  # Generar datos aleatorios
+            guardar_datos_csv(df, anio)  # Guardar en CSV
+            print(f"Datos aleatorios generados y guardados en registroPluvial{anio}.csv.")
+        else:
+            print(f"Registros pluviales del año {anio} cargados.")  # Confirmación de carga
 
-if __name__ == "__main__":
+        # Solicitar mes y validar entrada
+        while True:
+            try:
+                mes_elegido = int(input("Seleccione un mes (1-12): ")) - 1  # Ajustar índice a 0
+                if 0 <= mes_elegido < 12:  # Validar entrada
+                    mostrar_registros_mes(df, mes_elegido)  # Mostrar datos del mes elegido
+                    break  # Salir del bucle si la entrada es válida
+                else:
+                    print("Mes inválido. Intente nuevamente.")
+            except ValueError:
+                print("Entrada inválida. Por favor, intente de nuevo.")
+
+        if input("¿Desea consultar otro año? (s/n): ").lower() != 's':  # Preguntar si desea continuar
+            break  # Salir del bucle principal
+
+    # Llamar a la función de gráficos al final
+    crear_graficos(df, anio)  # Graficar datos al final del programa
+
+if _name_ == "_main_":
     main()  # Ejecutar la función principal
