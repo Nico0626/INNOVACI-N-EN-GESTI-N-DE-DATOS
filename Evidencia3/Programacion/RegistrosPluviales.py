@@ -109,5 +109,5 @@ def main():
     # Llamar a la función de gráficos al final
     crear_graficos(df, anio)  # Graficar datos al final del programa
 
-if _name_ == "_main_":
+if __name__ == "__main__":
     main()  # Ejecutar la función principal

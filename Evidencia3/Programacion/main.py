@@ -5,6 +5,7 @@ import time
 from gestor_usuarios import GestorUsuarios
 from colorama import Fore, Style
 from usuario import Usuario
+import RegistrosPluviales
 import captcha
 
 def logo():
@@ -30,8 +31,11 @@ def menu_principal():
         print("3. Eliminar un usuario")
         print("4. Buscar usuario")
         print("5. Mostrar todos los usuarios")
-        print("6. Ingresar al sistema")
-        print("7. Salir")
+        print("6. Ordenar usuarios Burbuja")
+        print("7. Ordenar usuarios paython")
+        print("8. Registros pluviales")
+        print("9. Ingresar al sistema")
+        print("10. Salir")
         opcion = input("Seleccione una opción: ")
 
         if opcion == "1":
@@ -45,9 +49,21 @@ def menu_principal():
             GestorUsuarios.buscar_usuario(user)
         elif opcion == "5":
             GestorUsuarios.mostrar_usuarios()
+
         elif opcion == "6":
-            login()
+            GestorUsuarios.ordenar_usuarios_burbuja()
+
         elif opcion == "7":
+            GestorUsuarios.ordenar_usuarios_python()
+
+        elif opcion == "8":
+            RegistrosPluviales.main()
+
+
+
+        elif opcion == "9":
+            login()
+        elif opcion == "10":
             print("Saliendo del sistema.")
             break
         else:
