@@ -50,7 +50,6 @@ def login():
             log_file.write(f"{time.strftime('%Y-%m-%d %H:%M:%S')} - Intento fallido: {username}\n")
         print("Credenciales incorrectas.")
 
-<<<<<<< HEAD
 ################## MENUS ##################
 
 def menu_principal():
@@ -198,41 +197,6 @@ def menu_base_datos():
             break
         else:
             print("Opción no válida. Intente de nuevo.")
-=======
-
-
-
-
-def menu_base_datos():
-     while True:
-        print("\n*** GESTOR BASE DE DATOS ***")
-        logo()
-        print("1. Modificar tabla")
-        print("2. Mostrar tabla")
-        print("3. Eliminar tabla")
-        print("4. Salir")
-        
-        opcion = input("Seleccione una opción: ")
-
-        if opcion == "1":
-            pass
-        elif opcion == "2":
-            pass
-        elif opcion == "3":
-            pass
-        elif opcion == "4":
-            RegistrosPluviales.main()
-        else:
-            print("ERROR: Valor no valido ")
-            return False
-        
-
-
-
-
-
-
->>>>>>> 248e149fc1d91649a28b48e7e7432d2545af73d9
 
 if __name__ == "__main__":
     menu_principal()
