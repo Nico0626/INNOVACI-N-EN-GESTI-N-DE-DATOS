@@ -20,3 +20,8 @@ class Acceso:
             with open('accesos.ispc', 'rb') as file:
                 return pickle.load(file)
         return []
+    @classmethod
+    def mostrar_accesos(cls):
+        accesos = cls.traer_accesos()
+        for acceso in accesos:
+            print(acceso)

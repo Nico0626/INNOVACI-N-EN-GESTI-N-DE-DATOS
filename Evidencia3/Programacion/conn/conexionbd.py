@@ -133,3 +133,22 @@ WHERE v.id_usuario = %s
 GROUP BY v.id_venta, v.fecha_venta, v.total
 ORDER BY v.fecha_venta DESC
 ''', (1,))
+
+ def read(self, tabla):
+        try:
+            cone = Conexiondb('localhost', 'root', 'NM260621', 'ARGBroker')
+            cone.conectar()
+            cursor = cone.connection.cursor()
+            sql = "SELECT * FROM %s"
+            cursor.execute(sql, (tabla))
+            row = cursor.fetchone()
+            if row:
+                return tabla(*row)
+            return None
+        except mysql.connector.Error as error:
+            print("Error al conectar a la base de datos: {}".format(error))
+        finally:
+            if cursor:
+                cursor.close()
+            if cone.connection:
+                cone.close()
